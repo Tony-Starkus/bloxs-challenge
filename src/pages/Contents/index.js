@@ -1,10 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import CardShimmer from '../../components/Shimmer/Card';
 
 const Contents = () => {
   return (
     <View style={styles.container}>
       <Text style={{color: '#FFF'}}>Contents screen</Text>
+      <CardShimmer />
     </View>
   );
 };
@@ -15,6 +17,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#121212',
+    paddingLeft: 5,
+    paddingRight: 5,
   },
 });
 
