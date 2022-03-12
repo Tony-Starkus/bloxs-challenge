@@ -5,9 +5,9 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
 
-const CardShimmer = () => {
+const CardShimmer = props => {
   return (
-    <View style={styles.root}>
+    <View style={[styles.root, props.style]}>
       <ShimmerPlaceholder
         shimmerColors={['#323232', '#2d2d2d', '#282828']}
         shimmerStyle={{
