@@ -10,7 +10,7 @@ const Contents = () => {
         contentContainerStyle={styles.buttonsNavigation}
         horizontal
         showsHorizontalScrollIndicator={false}>
-        <Button title="Todos" />
+        <Button title="Todos" active={true} />
         <Button title="Agronegócios" style={styles.buttonGap} />
         <Button title="Energia" style={styles.buttonGap} />
         <Button title="Real" style={styles.buttonGap} />

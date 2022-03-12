@@ -13,6 +13,9 @@ import {
   StyleSheet,
   useColorScheme,
   View,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Text,
 } from 'react-native';
 
 // React navigation
@@ -31,6 +34,9 @@ import Invest from './src/pages/Invest';
 import Contents from './src/pages/Contents';
 import Profile from './src/pages/Profile';
 
+// Components
+import CustomTabBar from './src/components/BottomBar';
+
 const Tab = createBottomTabNavigator();
 
 const App = () => {
@@ -46,26 +52,8 @@ const App = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <NavigationContainer>
         <Tab.Navigator
-          screenOptions={({route}) => ({
-            tabBarIcon: ({focused, color, size}) => {
-              // Set icons for each screen
-              let iconName;
-              let colorIcon = focused ? '#FFF' : '#8F8F8F';
-              if (route.name === 'Carteiras') {
-                iconName = 'wallet-outline';
-              } else if (route.name === 'Portfolio') {
-                iconName = 'bar-chart-outline';
-              } else if (route.name === 'Investir') {
-                iconName = 'logo-usd';
-              } else if (route.name === 'Conteúdos') {
-                iconName = 'document-text-outline';
-              } else if (route.name === 'Perfil') {
-                iconName = 'person-circle-outline';
-              }
-
-              // You can return any component that you like here!
-              return <Ionicons name={iconName} size={size} color={colorIcon} />;
-            },
+          tabBar={props => <CustomTabBar {...props} />}
+          screenOptions={() => ({
             headerStyle: {
               backgroundColor: '#121212',
             },
