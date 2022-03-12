@@ -11,11 +11,9 @@ const Contents = () => {
         horizontal
         showsHorizontalScrollIndicator={false}>
         <Button title="Todos" active={true} />
-        <Button title="Agronegócios" style={styles.buttonGap} />
         <Button title="Energia" style={styles.buttonGap} />
-        <Button title="Real" style={styles.buttonGap} />
-        <Button title="Dolar" style={styles.buttonGap} />
-        <Button title="Tecnologia" style={styles.buttonGap} />
+        <Button title="Agronegócios" style={styles.buttonGap} />
+        <Button title="Real State" style={styles.buttonGap} />
       </ScrollView>
       <ScrollView style={{marginTop: 20}}>
         <CardShimmer style={styles.cardGap} />
