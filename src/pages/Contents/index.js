@@ -44,15 +44,11 @@ const Contents = () => {
   }, []);
 
   const getNews = category => {
-    if (refFlatList.current) {
-      // Scroll list back to top
-      refFlatList.current.scrollToIndex({index: 0});
-    }
     setLoadingNewsData(true);
     api
       .get(`/posts`, {
         params: {
-          embed: 1,
+          _embed: 1,
           categories: category,
           page: page,
         },
@@ -66,6 +62,10 @@ const Contents = () => {
   };
 
   const handleSelecteNews = useCallback(newsItem => {
+    if (refFlatList.current) {
+      // Scroll list back to top
+      refFlatList.current.scrollToIndex({index: 0});
+    }
     setPage(1);
     setNewsSelected(newsItem.id);
     getNews(newsItem.id);
@@ -76,7 +76,7 @@ const Contents = () => {
     api
       .get(`/posts`, {
         params: {
-          embed: 1,
+          _embed: 1,
           categories: newsSelected,
           page: page + 1,
         },
@@ -115,7 +115,7 @@ const Contents = () => {
           data={newsData}
           renderItem={({item}) => (
             <CardNews
-              image="https://images.wallpapersden.com/image/wxl-assassin-s-creed-valhalla-8k-viking_71035.jpg"
+              image={item._embedded['wp:featuredmedia'][0]['source_url']}
               title={item.title.rendered}
               style={styles.cardGap}
             />
@@ -128,18 +128,6 @@ const Contents = () => {
           ListFooterComponent={() => <CardShimmer />}
         />
       </View>
-      {/* <ScrollView style={{marginTop: 20}}>
-        {newsData.map(item => (
-          <CardNews
-            key={item.id}
-            image="https://images.wallpapersden.com/image/wxl-assassin-s-creed-valhalla-8k-viking_71035.jpg"
-            title={item.title.rendered}
-            style={styles.cardGap}
-          />
-        ))}
-        <CardShimmer style={styles.cardGap} />
-        <CardShimmer />
-      </ScrollView> */}
     </View>
   );
 };
